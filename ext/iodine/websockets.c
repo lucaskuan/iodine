@@ -189,7 +189,7 @@ static void websocket_on_unwrapped(void *udata, void *msg, uint64_t len,
 static void websocket_on_protocol_ping(void *udata, void *msg_, uint64_t len) {
   ws_s *ws = udata;
   uint16_t *msg = msg_;
-  msg[-1] = *((uint16_t *)"\x89\x00");
+  msg[-1] = *((uint16_t *)"\x8a\x00");
   sock_write2(.uuid = ws->fd, .buffer = (void *)(msg - 1), .length = 2 + len);
 }
 static void websocket_on_protocol_pong(void *udata, void *msg, uint64_t len) {
